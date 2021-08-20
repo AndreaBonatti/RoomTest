@@ -2,8 +2,9 @@ package com.example.roomtest.fragments.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.roomtest.data.User
+import com.example.roomtest.model.User
 import com.example.roomtest.databinding.CustomRowBinding
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
@@ -29,6 +30,11 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         holder.binding.firstNameTxt.text = currentItem.firstName
         holder.binding.lastNameTxt.text = currentItem.lastName
         holder.binding.ageTxt.text = currentItem.age.toString()
+
+        holder.binding.rowLayout.setOnClickListener {
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

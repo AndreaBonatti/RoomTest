@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.roomtest.R
-import com.example.roomtest.data.User
-import com.example.roomtest.data.UserViewModel
+import com.example.roomtest.model.User
+import com.example.roomtest.viewmodel.UserViewModel
 import com.example.roomtest.databinding.FragmentAddBinding
 
 class AddFragment : Fragment() {
@@ -50,11 +50,11 @@ class AddFragment : Fragment() {
             val user = User(0, firstName, lastName, Integer.parseInt(age.toString()))
             // Add Data to Database
             mUserViewModel.addUser(user)
-            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_SHORT).show()
             // Navigate Back
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT).show()
         }
     }
 
